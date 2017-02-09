@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">fitit.v1</string>
+    <string name="lbl_loginame">نام کاربری</string>
+    <string name="lbl_pass">رمز عبور</string>
+    <string name="btn_login">ورود</string>
+    <string name="btn_reg">ثبت نام</string>
+    <!--error-->
+    <string name="error_login_username">ثبت نام</string>
+
+
+</resources>
