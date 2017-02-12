@@ -11,5 +11,6 @@ public class RegisterForm extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         System.out.println("test");
+
     }
 }

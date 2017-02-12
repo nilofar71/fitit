@@ -25,7 +25,7 @@ public class G extends Application {
     public static final String DIR_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath();
 //    Connection conn = DriverManager.getConnection(HOST+DB,USER,PASSWORD);
 
-    public static final String DIR_DATABASE =  "/database-test";
+    public static final String DIR_DATABASE = DIR_SDCARD + "/database-test";
 
     @Override
     public void onCreate() {
@@ -41,12 +41,12 @@ public class G extends Application {
 //                    "person_age INTEGER" +
 //                    ")");
 
-            final Connection cn= DriverManager.getConnection(DIR_SDCARD + database, null, null);
+//            final Connection cn= DriverManager.getConnection(DIR_SDCARD + database, null, null);
 //
 
-            database.execSQL("CREATE  TABLE IF NOT EXISTS person(id INTEGER PRIMARY KEY  NOT NULL  UNIQUE " +
-                    ", name TEXT, last TEXT, weight INTEGER, height INTEGER, email TEXT, vip CHAR" +
-                    ", creationDate DATETIME, expireDate DATETIME, pass TEXT)");
+            database.execSQL("CREATE  TABLE IF NOT EXISTS person(id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE " +
+                    ", name TEXT, last TEXT, weight INTEGER, height INTEGER, email TEXT, vip CHAR " +
+                    ", creationDate DATETIME, expireDate DATETIME, pass TEXT) ");
 
 
         }catch (Exception e){
@@ -55,7 +55,7 @@ public class G extends Application {
 
     }
 
-    private boolean registerPerson(Person person){
+    public static boolean registerPerson(Person person){
         try {
 //            booleanExpression ? value1 : value2
             final Connection cn= DriverManager.getConnection(DIR_SDCARD + database, null, null);
@@ -123,7 +123,7 @@ public class G extends Application {
     }
 
 
-    public Date getSysdate(){
+    public static Date getSysdate(){
 
      return null;
     }
