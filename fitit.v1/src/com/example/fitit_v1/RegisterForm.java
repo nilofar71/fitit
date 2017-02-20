@@ -9,8 +9,8 @@ import android.os.Bundle;
 public class RegisterForm extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        System.out.println("test");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.registerform);
 
     }
 }

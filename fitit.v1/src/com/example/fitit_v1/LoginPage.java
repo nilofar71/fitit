@@ -21,6 +21,16 @@ public class LoginPage extends Activity {
         final EditText pass = (EditText) findViewById(R.id.pass);
         Button login = (Button) findViewById(R.id.login);
         Button register= (Button) findViewById(R.id.register);
+        Button html= (Button) findViewById(R.id.html);
+        html.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(LoginPage.this,MyActivity.class);
+                LoginPage.this.startActivity(intent);
+            }
+        });
+
 
 
         login.setOnClickListener(new View.OnClickListener() {
