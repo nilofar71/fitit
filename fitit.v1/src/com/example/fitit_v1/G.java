@@ -33,7 +33,7 @@ public class G extends Application {
         context = this.getApplicationContext();
         new File(DIR_DATABASE).mkdirs();
         try {
-            database = SQLiteDatabase.openOrCreateDatabase(DIR_DATABASE + "/farazDatabase.sqlite", null);
+            database = SQLiteDatabase.openOrCreateDatabase("farazDatabase.sqlite", null);
 //            database.execSQL("CREATE  TABLE  IF NOT EXISTS person ( " +
 //                    "person_id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, " +
 //                    "person_name TEXT, " +

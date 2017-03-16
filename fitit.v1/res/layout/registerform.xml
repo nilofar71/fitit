@@ -5,10 +5,9 @@
               android:layout_height="match_parent">
 
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="61dp"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView3" android:layout_gravity="right"/>
+            android:id="@+id/name" android:layout_gravity="right" android:text="@string/lbl_loginame"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,4 +32,9 @@
               android:id="@+id/textView8" android:layout_gravity="right"/>
     <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/editText6"
             />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ثبت نام"
+            android:id="@+id/button"/>
 </LinearLayout>

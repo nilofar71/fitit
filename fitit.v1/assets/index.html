@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="css/core/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/core/jqm-demos.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <script src="js/core/jquery.js"></script>
+    <script src="js/core/index.js"></script>
+    <script src="js/core/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/core/sql.js"></script>
+    <script>
+
+        function x(){
+
+            alert("call");
+//        var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
+//        DIR_DATABASE + "/farazDatabase.sqlite"
+//            var fs = require('fs');
+//            var SQL = require('sql.js');
+//            var filebuffer = fs.readFileSync('farazDatabase.sqlite');
+//            alert(filebuffer);
+
+// Load the db
+//            var db = SQL.Database(filebuffer);
+//            db.transaction(function (tx) {
+//                tx.executeSql('CREATE TABLE IF NOT EXISTS foo (id unique, text)');
+//                tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "synergies")');
+//            });
+//
+//            tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+//                var len = results.rows.length, i;
+//                for (i = 0; i < len; i++) {
+//                    alert(results.rows.item(i).text);
+//                }
+//            });
+        }
+    </script>
 </head>
 <body>
     <p>test</p>
+    <!--<a href="javascript:Android.launchActivity()">Link</a>-->
+    <a href="custom://launchActivity">Link</a>
+    <input type="button" value="ok" onclick="x()">
 </body>
 </html>

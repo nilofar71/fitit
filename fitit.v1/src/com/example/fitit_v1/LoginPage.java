@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 /**
  * Created by nilofar on 1/26/2017.
  */
@@ -38,7 +37,8 @@ public class LoginPage extends Activity {
             public void onClick(View v) {
                 if (name == null || name.toString().contains("")) {
                     name.setBackgroundColor(3);
-                    Toast.makeText(getApplicationContext(), "‰«„ ò«—»—? Ê«—œ ‰‘œÂ «” ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "‰«„ ò«—»—? Ê«? ‰‘œÂ «” ", Toast.LENGTH_LONG).show();
+                  //  name.setBackground();
                 } else if (pass == null) {
                     pass.setBackgroundColor(3);
                     Toast.makeText(getApplicationContext(), "—„“ ⁄»Ê— Ê«—œ ‰‘œÂ «” ", Toast.LENGTH_LONG).show();
