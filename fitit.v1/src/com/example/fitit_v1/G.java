@@ -2,18 +2,19 @@ package com.example.fitit_v1;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import model.Person;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.util.Date;
-
+import java.sql.*;
 /**
  * Created by nilofar on 1/26/2017.
  */
@@ -22,18 +23,23 @@ public class G extends Application {
     public static SQLiteDatabase database;
 
 //    public static final String DIR_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath();
-    public static final String DIR_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath();
+//    public  final String DIR_SDCARD = getFilesDir().getAbsolutePath();
 //    Connection conn = DriverManager.getConnection(HOST+DB,USER,PASSWORD);
-
-    public static final String DIR_DATABASE = DIR_SDCARD + "/database-test";
+    public static String DIR_DATABASE2=Environment.getExternalStorageDirectory().getAbsolutePath()+ "/database-test";
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         context = this.getApplicationContext();
+//        final String DIR_DATABASE =getFilesDir().getAbsolutePath()+ "/database-test";
+        final String DIR_DATABASE =Environment.getExternalStorageDirectory().getAbsolutePath()+ "/database-test";
+//        DIR_DATABASE2=DIR_DATABASE;
+//        System.out.println("address DIR_SDCARD::" + getFilesDir().getAbsolutePath());
+//        System.out.println("address DIR_DATABASE::"+  DIR_DATABASE );
         new File(DIR_DATABASE).mkdirs();
         try {
-            database = SQLiteDatabase.openOrCreateDatabase("farazDatabase.sqlite", null);
+            database = SQLiteDatabase.openOrCreateDatabase(DIR_DATABASE+"/farazDatabase.sqlite", null);
 //            database.execSQL("CREATE  TABLE  IF NOT EXISTS person ( " +
 //                    "person_id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, " +
 //                    "person_name TEXT, " +
@@ -47,6 +53,9 @@ public class G extends Application {
             database.execSQL("CREATE  TABLE IF NOT EXISTS person(id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE " +
                     ", name TEXT, last TEXT, weight INTEGER, height INTEGER, email TEXT, vip CHAR " +
                     ", creationDate DATETIME, expireDate DATETIME, pass TEXT) ");
+//            File source = new File(DIR_DATABASE);
+//            File destination = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+android.os.Environment.DIRECTORY_DCIM);
+//            copyFile(source,destination);
 
 
         }catch (Exception e){
@@ -58,7 +67,17 @@ public class G extends Application {
     public static boolean registerPerson(Person person){
         try {
 //            booleanExpression ? value1 : value2
-            final Connection cn= DriverManager.getConnection(DIR_SDCARD + database, null, null);
+            System.out.println("data base ::" + database);
+//            System.loadLibrary("../libs/sqlite-jdbc-3.8.11.2.jar");
+//            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
+            String url = "jdbc:sqlite:" + DIR_DATABASE2+"/farazDatabase.sqlite";
+//            String url = DIR_DATABASE2+"/farazDatabase.sqlite";
+            // create a connection to the database
+            Class.forName("org.sqlite.JDBC");
+//            DriverManager.registerDriver(new org.sqlite.JDBC());
+//            final Connection cn = DriverManager.getConnection(url);
+            final Connection cn = DriverManager.getConnection(url);
+//            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
             String sql = "INSERT INTO person( name, last, weight, height, email, vip, creationDate" +
                     ", expireDate, pass) VALUES (?, ?, ?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -73,7 +92,13 @@ public class G extends Application {
             ps.setString(9, md5(person.getPass()));
             ps.executeUpdate();
             return true;
-        }catch (Exception e){
+        } catch (SQLException ex) {
+        System.out.println("An error occurred. Maybe user/password is invalid");
+        ex.printStackTrace();
+            System.exit(0);
+            return false;
+    }
+ catch (Exception e){
             e.printStackTrace();
             return false;
         }
@@ -126,6 +151,34 @@ public class G extends Application {
     public static Date getSysdate(){
 
      return null;
+    }
+
+
+
+
+    public static void copyFile(File sourceFile, File destFile) throws IOException {
+        if (!destFile.getParentFile().exists())
+            destFile.getParentFile().mkdirs();
+
+        if (!destFile.exists()) {
+            destFile.createNewFile();
+        }
+
+        FileChannel source = null;
+        FileChannel destination = null;
+
+        try {
+            source = new FileInputStream(sourceFile).getChannel();
+            destination = new FileOutputStream(destFile).getChannel();
+            destination.transferFrom(source, 0, source.size());
+        } finally {
+            if (source != null) {
+                source.close();
+            }
+            if (destination != null) {
+                destination.close();
+            }
+        }
     }
 
 }

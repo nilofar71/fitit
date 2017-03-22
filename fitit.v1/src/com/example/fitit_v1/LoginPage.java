@@ -36,12 +36,12 @@ public class LoginPage extends Activity {
             @Override
             public void onClick(View v) {
                 if (name == null || name.toString().contains("")) {
-                    name.setBackgroundColor(3);
-                    Toast.makeText(getApplicationContext(), "‰«„ ò«—»—? Ê«? ‰‘œÂ «” ", Toast.LENGTH_LONG).show();
+//                    name.setBackgroundColor(3);
+                    Toast.makeText(LoginPage.this,"‰«„ ò«—»—? —« Ê«—œ ò‰?œ", Toast.LENGTH_LONG).show();
                   //  name.setBackground();
                 } else if (pass == null) {
-                    pass.setBackgroundColor(3);
-                    Toast.makeText(getApplicationContext(), "—„“ ⁄»Ê— Ê«—œ ‰‘œÂ «” ", Toast.LENGTH_LONG).show();
+//                    pass.setBackgroundColor(3);
+                    Toast.makeText(LoginPage.this, "—„“ ⁄»Ê— Ê«—œ ‰‘œÂ «” ", Toast.LENGTH_LONG).show();
                 }
 
 
