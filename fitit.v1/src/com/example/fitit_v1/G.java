@@ -71,10 +71,11 @@ public class G extends Application {
 //            System.loadLibrary("../libs/sqlite-jdbc-3.8.11.2.jar");
 //            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
             String url = "jdbc:sqlite:" + DIR_DATABASE2+"/farazDatabase.sqlite";
+//            String url = "jdbc:sqlite:farazDatabase.sqlite";
 //            String url = DIR_DATABASE2+"/farazDatabase.sqlite";
             // create a connection to the database
-            Class.forName("org.sqlite.JDBC");
-//            DriverManager.registerDriver(new org.sqlite.JDBC());
+//            Class.forName("org.sqlite.JDBC");
+            DriverManager.registerDriver(new org.sqlite.JDBC());
 //            final Connection cn = DriverManager.getConnection(url);
             final Connection cn = DriverManager.getConnection(url);
 //            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
