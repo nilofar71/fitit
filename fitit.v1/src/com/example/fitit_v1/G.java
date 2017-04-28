@@ -65,44 +65,41 @@ public class G extends Application {
     }
 
     public static boolean registerPerson(Person person){
-        try {
-//            booleanExpression ? value1 : value2
-            System.out.println("data base ::" + database);
-//            System.loadLibrary("../libs/sqlite-jdbc-3.8.11.2.jar");
-//            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
-            String url = "jdbc:sqlite:" + DIR_DATABASE2+"/farazDatabase.sqlite";
-//            String url = "jdbc:sqlite:farazDatabase.sqlite";
-//            String url = DIR_DATABASE2+"/farazDatabase.sqlite";
-            // create a connection to the database
-//            Class.forName("org.sqlite.JDBC");
-            DriverManager.registerDriver(new org.sqlite.JDBC());
-//            final Connection cn = DriverManager.getConnection(url);
-            final Connection cn = DriverManager.getConnection(url);
-//            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
-            String sql = "INSERT INTO person( name, last, weight, height, email, vip, creationDate" +
-                    ", expireDate, pass) VALUES (?, ?, ?,?,?,?,?,?,?)";
-            PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, person.getName());
-            ps.setString(2, person.getLastName());
-            ps.setInt(3, person.getWeight());
-            ps.setInt(4, person.getHeight());
-            ps.setString(5, person.getEmail());
-            ps.setString(6, person.isVIP() ? "1" : "0");
-            ps.setDate(7, (java.sql.Date) getSysdate());
-            ps.setDate(8, (java.sql.Date) getSysdate());
-            ps.setString(9, md5(person.getPass()));
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-        System.out.println("An error occurred. Maybe user/password is invalid");
-        ex.printStackTrace();
-            System.exit(0);
-            return false;
-    }
- catch (Exception e){
-            e.printStackTrace();
-            return false;
+            try {
+    //            booleanExpression ? value1 : value2
+    //            System.out.println("data base ::" + database);
+    //            System.loadLibrary("../libs/sqlite-jdbc-3.8.11.2.jar");
+    //            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
+                String url = "jdbc:sqlite:" + DIR_DATABASE2+"/farazDatabase.sqlite";
+    //            String url = "jdbc:sqlite:farazDatabase.sqlite";
+    //            String url = DIR_DATABASE2+"/farazDatabase.sqlite";
+                // create a connection to the database
+    //            Class.forName("org.sqlite.JDBC");
+    //            DriverManager.registerDriver(new org.sqlite.JDBC());
+    //            final Connection cn = DriverManager.getConnection(url);
+    //            final Connection cn = DriverManager.getConnection(url);
+    //            final Connection cn= DriverManager.getConnection(DIR_DATABASE2 + database,"","");
+    //            String sql = "INSERT INTO person( name, last, weight, height, email, vip, creationDate" +
+    //                    ", expireDate, pass) VALUES (?, ?, ?,?,?,?,?,?,?)";
+    //            PreparedStatement ps = cn.prepareStatement(sql);
+    //            ps.setString(1, person.getName());
+    //            ps.setString(2, person.getLastName());
+    //            ps.setInt(3, person.getWeight());
+    //            ps.setInt(4, person.getHeight());
+    //            ps.setString(5, person.getEmail());
+    //            ps.setString(6, person.isVIP() ? "1" : "0");
+    //            ps.setDate(7, (java.sql.Date) getSysdate());
+    //            ps.setDate(8, (java.sql.Date) getSysdate());
+    //            ps.setString(9, md5(person.getPass()));
+    //            ps.executeUpdate();
+    //            return true;
+            } catch (SQLException ex) {
+            System.out.println("An error occurred. Maybe user/password is invalid");
+            ex.printStackTrace();
+                System.exit(0);
+                return false;
         }
+            return false;
     }
 
 
