@@ -15,6 +15,7 @@ public class Person implements Serializable {
 
     @DatabaseField(columnName = "name")
     public String name;
+
 //    private String lastName;
 //    private int weight;
 //    private int height;
@@ -26,7 +27,6 @@ public class Person implements Serializable {
 
 
     public Person(String name) {
-//        this.id = id;
         this.name = name;
     }
     public Person(){}
